@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b0f78675-8bb1-4698-9165-3d27603bee58" name="Default Changelist" comment="" />
+    <list default="true" id="b0f78675-8bb1-4698-9165-3d27603bee58" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/project1.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ServerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ServerManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yongqi model/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/yongqi model/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,14 +24,20 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="1YbuACUtq48SKz755aMhh8TDREC" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/yongqi model" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
@@ -85,6 +101,10 @@
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
     <state x="827" y="372" key="#com.intellij.ide.util.PackageChooserDialog/0.0.2194.1194@0.0.2194.1194" timestamp="1583423747871" />
+    <state x="802" y="281" key="#com.intellij.refactoring.encapsulateFields.EncalpsulateFieldsDialog" timestamp="1583651671929">
+      <screen x="0" y="0" width="2194" height="1194" />
+    </state>
+    <state x="802" y="281" key="#com.intellij.refactoring.encapsulateFields.EncalpsulateFieldsDialog/0.0.2194.1194@0.0.2194.1194" timestamp="1583651671929" />
     <state x="814" y="308" key="#com.intellij.refactoring.move.moveMembers.MoveMembersDialog" timestamp="1583425469279">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>

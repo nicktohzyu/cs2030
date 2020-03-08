@@ -8,7 +8,7 @@ public class Main {
         Server server = new Server();
         PriorityQueue<Event> events = new PriorityQueue<>();
         Scanner scanner = new Scanner(System.in);
-        while(scanner.hasNext()){
+        while (scanner.hasNext()) {
             Customer customer = new Customer(scanner.nextDouble(), ++customersServed);
             Event arrivalEvent = new Event(customer, Event.ARRIVES);
             events.add(arrivalEvent);

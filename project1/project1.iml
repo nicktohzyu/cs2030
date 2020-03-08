@@ -8,6 +8,7 @@
       <excludeFolder url="file://$MODULE_DIR$/src/l2" />
       <excludeFolder url="file://$MODULE_DIR$/src/l3" />
       <excludeFolder url="file://$MODULE_DIR$/src/l4" />
+      <excludeFolder url="file://$MODULE_DIR$/yongqi model" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

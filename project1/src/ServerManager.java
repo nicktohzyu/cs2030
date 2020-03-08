@@ -16,19 +16,19 @@ public class ServerManager {
             Event newEvent; // would have put this inside the relevant cases but compiler complains
             switch (event.state) {
                 case Event.ARRIVES:
-                    if (eventTime >= server.nextServeTime) {
+                    if (eventTime >= server.getNextServeTime()) {
                         //the server is free, customer is served immediately
-                        customer.servedTime = eventTime; //customer is served immediately
+                        customer.setServedTime(eventTime); //customer is served immediately
                         newEvent = new Event(customer, Event.SERVED);
                     } else {
-                        if (server.hasWaitingCustomer) {
+                        if (server.isHasWaitingCustomer()) {
                             //there is already another customer waiting
                             newEvent = new Event(customer, Event.LEAVES);
                             customersLeftWithoutBeingServed++;
                         } else { //customer waits
-                            customer.servedTime = server.nextServeTime;
+                            customer.setServedTime(server.getNextServeTime());
                             newEvent = new Event(customer, Event.WAITS);
-                            server.hasWaitingCustomer = true;
+                            server.setHasWaitingCustomer(true);
                         }
                     }
                     events.add(newEvent);
@@ -38,11 +38,11 @@ public class ServerManager {
                     events.add(newEvent);
                     break;
                 case Event.SERVED:
-                    server.nextServeTime = event.customer.servedTime + Customer.SERVE_TIME;
-                    server.hasWaitingCustomer = false;
+                    server.setNextServeTime(event.customer.getServedTime() + Customer.SERVE_TIME);
+                    server.setHasWaitingCustomer(false);
                     newEvent = new Event(customer, Event.DONE);
                     events.add(newEvent);
-                    totalWaitingTime += customer.servedTime - customer.arrivalTime;
+                    totalWaitingTime += customer.getServedTime() - customer.arrivalTime;
                     break;
                 case Event.DONE:
                     customersServed++;
@@ -50,8 +50,8 @@ public class ServerManager {
                 default:
                     break;
             }
-//            customers.forEach(c -> System.out.print(c.toString()));
         }
-        System.out.printf("[%.3f %d %d]\n", totalWaitingTime / customersServed, customersServed, customersLeftWithoutBeingServed);
+        System.out.printf("[%.3f %d %d]\n", totalWaitingTime / customersServed,
+                customersServed, customersLeftWithoutBeingServed);
     }
 }

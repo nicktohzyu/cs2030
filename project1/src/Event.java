@@ -1,9 +1,8 @@
 /**
  * Represents a customer. Stores the customer's id, arrival time, served time, and state.
  * Implements comparable, which compares the customers by next relavant time and ID.
- *
  */
-public class Event implements Comparable<Event>{
+public class Event implements Comparable<Event> {
     public static final int ARRIVES = 1;
     public static final int SERVED = 2;
     public static final int LEAVES = 3;
@@ -14,22 +13,22 @@ public class Event implements Comparable<Event>{
     final int state; //represents what will happen next
     final double time;
 
-    Event(Customer customer, int state){
+    Event(Customer customer, int state) {
         this.customer = customer;
         this.state = state;
         this.time = getTime();
     }
-    
-    public double getTime(){
-        switch(this.state){
+
+    public double getTime() {
+        switch (this.state) {
             case ARRIVES:
             case LEAVES:
             case WAITS:
                 return this.customer.arrivalTime;
             case SERVED:
-                return this.customer.servedTime;
+                return this.customer.getServedTime();
             case DONE:
-                return this.customer.servedTime +1;
+                return this.customer.getServedTime() + 1;
             default:
                 break;
         }
@@ -38,8 +37,8 @@ public class Event implements Comparable<Event>{
     }
 
     @Override
-    public String toString(){
-        switch(this.state) {
+    public String toString() {
+        switch (this.state) {
             case ARRIVES:
                 return String.format("%.3f %d arrives\n", this.time, this.customer.id);
             case LEAVES:
@@ -54,8 +53,11 @@ public class Event implements Comparable<Event>{
                 return "";
         }
     }
+
     public int compareTo(Event otherEvent) {
         int comparedTime = Double.compare(this.time, otherEvent.time);
-        return comparedTime == 0 ? Integer.compare(this.customer.id, otherEvent.customer.id) : comparedTime;
+        return comparedTime == 0 ?
+                Integer.compare(this.customer.id, otherEvent.customer.id)
+                : comparedTime;
     }
 }
