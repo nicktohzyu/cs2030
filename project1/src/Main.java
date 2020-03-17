@@ -3,9 +3,14 @@ import java.util.PriorityQueue;
 
 public class Main {
 
+    /**
+     * Scans customer arrival times from input, then creates events representing their arrival
+     * and puts them into a priority queue, then passes it to the manage method to
+     * simulate the discrete events.
+     * @param args input arguments.
+     */
     public static void main(String[] args) {
         int customersServed = 0;
-        Server server = new Server();
         PriorityQueue<Event> events = new PriorityQueue<>();
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNext()) {
@@ -13,6 +18,8 @@ public class Main {
             Event arrivalEvent = new Event(customer, Event.ARRIVES);
             events.add(arrivalEvent);
         }
-        ServerManager.manage(events, server);
+        scanner.close();
+        //pass priority queue of customers arriving to ServerManager
+        ServerManager.manage(events, new Server());
     }
 }

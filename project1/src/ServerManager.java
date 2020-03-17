@@ -1,7 +1,19 @@
 import java.util.PriorityQueue;
 
+/**
+ * Provides a static function to simulate the discrete events.
+ */
 // can be modified to take multiple servers
-public class ServerManager {
+class ServerManager {
+    /**
+     * Manages the server by handling events and assigning customers
+     * to the server as necessary. Effectively, it simulates the discrete events.
+     * Prints a string representation of each event as it is processed, then
+     * prints the statistics of average customer waiting time, number of
+     * customers served, and number of customers who left without being served.
+     * @param events A priority queue initially consisting of customers arriving.
+     * @param server The server which will serve customers.
+     */
     //only ever one manager and does not store data, hence implemented as static
     public static void manage(PriorityQueue<Event> events, Server server) {
         double totalWaitingTime = 0;
@@ -12,41 +24,27 @@ public class ServerManager {
             Event event = events.poll();
             System.out.print(event.toString());
             Customer customer = event.customer;
-            double eventTime = event.time;
-            Event newEvent; // would have put this inside the relevant cases but compiler complains
             switch (event.state) {
                 case Event.ARRIVES:
-                    if (eventTime >= server.getNextServeTime()) {
-                        //the server is free, customer is served immediately
-                        customer.setServedTime(eventTime); //customer is served immediately
-                        newEvent = new Event(customer, Event.SERVED);
-                    } else {
-                        if (server.isHasWaitingCustomer()) {
-                            //there is already another customer waiting
-                            newEvent = new Event(customer, Event.LEAVES);
-                            customersLeftWithoutBeingServed++;
-                        } else { //customer waits
-                            customer.setServedTime(server.getNextServeTime());
-                            newEvent = new Event(customer, Event.WAITS);
-                            server.setHasWaitingCustomer(true);
-                        }
+                    int outcomeState = server.customerArrives(customer);
+                    if (outcomeState == Event.LEAVES) {
+                        customersLeftWithoutBeingServed++;
                     }
-                    events.add(newEvent);
+                    events.add(new Event(customer, outcomeState));
                     break;
                 case Event.WAITS: //serve the waiting customer
-                    newEvent = new Event(customer, Event.SERVED);
-                    events.add(newEvent);
+                    events.add(new Event(customer, Event.SERVED));
                     break;
                 case Event.SERVED:
-                    server.setNextServeTime(event.customer.getServedTime() + Customer.SERVE_TIME);
-                    server.setHasWaitingCustomer(false);
-                    newEvent = new Event(customer, Event.DONE);
-                    events.add(newEvent);
-                    totalWaitingTime += customer.getServedTime() - customer.arrivalTime;
+                    server.serveCustomer(customer);
+                    events.add(new Event(customer, Event.DONE));
+                    totalWaitingTime += customer.getWaitingTime();
                     break;
                 case Event.DONE:
                     customersServed++;
-                case Event.LEAVES:
+                    break;
+                case Event.LEAVES: // checkstyle doesn't allow fall through
+                    break;
                 default:
                     break;
             }
