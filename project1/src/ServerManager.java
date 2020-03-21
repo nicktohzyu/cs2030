@@ -11,11 +11,12 @@ class ServerManager {
      * Prints a string representation of each event as it is processed, then
      * prints the statistics of average customer waiting time, number of
      * customers served, and number of customers who left without being served.
-     * @param events A priority queue initially consisting of customers arriving.
-     * @param server The server which will serve customers.
+     *
+     * @param events  A priority queue initially consisting of customers arriving.
+     * @param servers An array of the servers which will serve customers.
      */
     //only ever one manager and does not store data, hence implemented as static
-    public static void manage(PriorityQueue<Event> events, Server server) {
+    public static void manage(PriorityQueue<Event> events, Server[] servers) {
         double totalWaitingTime = 0;
         int customersServed = 0;
         int customersLeftWithoutBeingServed = 0;
@@ -26,18 +27,39 @@ class ServerManager {
             Customer customer = event.customer;
             switch (event.state) {
                 case Event.ARRIVES:
-                    int outcomeState = server.customerArrives(customer);
-                    if (outcomeState == Event.LEAVES) {
-                        customersLeftWithoutBeingServed++;
+                    boolean served = false;
+                    for (int i = 0; i < servers.length && !served; i++) {
+                        if (servers[i].canServeImmediately(customer)) {
+                            //customer is served immediately
+                            customer.setServedTime(customer.getArrivalTime());
+                            served = true;
+                            events.add(new Event(customer, Event.SERVED, servers[i]));
+                        }
                     }
-                    events.add(new Event(customer, outcomeState));
+                    if (served) {
+                        break;
+                    }
+                    for (int i = 0; i < servers.length && !served; i++) {
+                        if (!servers[i].isHasWaitingCustomer()) {
+                            customer.setServedTime(servers[i].getNextServeTime());
+                            servers[i].setHasWaitingCustomer(true);
+                            served = true;
+                            events.add(new Event(customer, Event.WAITS, servers[i]));
+                        }
+                    }
+                    if (served) {
+                        break;
+                    } else {
+                        customersLeftWithoutBeingServed++;
+                        events.add(new Event(customer, Event.LEAVES));
+                    }
                     break;
                 case Event.WAITS: //serve the waiting customer
-                    events.add(new Event(customer, Event.SERVED));
+                    events.add(new Event(customer, Event.SERVED, event.server));
                     break;
                 case Event.SERVED:
-                    server.serveCustomer(customer);
-                    events.add(new Event(customer, Event.DONE));
+                    event.server.serveCustomer(customer);
+                    events.add(new Event(customer, Event.DONE, event.server));
                     totalWaitingTime += customer.getWaitingTime();
                     break;
                 case Event.DONE:

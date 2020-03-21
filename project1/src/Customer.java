@@ -8,7 +8,7 @@ class Customer {
      */
     public static final double SERVE_TIME = 1;
     /**
-     * The id of the customer.
+     * The ID of the customer.
      */
     final int id;
     private final double arrivalTime;
@@ -18,8 +18,9 @@ class Customer {
      * Constructs a new customer object that represents a customer
      * with ID given by the specified id value and arrival time indicated
      * by the double parameter.
+     *
      * @param arrivalTime the time at which the customer arrives.
-     * @param id the id of the customer.
+     * @param id          the ID of the customer.
      */
     public Customer(double arrivalTime, int id) {
         this.id = id;
@@ -28,6 +29,7 @@ class Customer {
 
     /**
      * Returns the time at which the customer is served.
+     *
      * @return the time at which the customer is served.
      */
     public double getServedTime() {
@@ -36,6 +38,7 @@ class Customer {
 
     /**
      * Sets the time at which the customer is served.
+     *
      * @param servedTime the time when the customer is served.
      */
     public void setServedTime(double servedTime) {
@@ -44,6 +47,7 @@ class Customer {
 
     /**
      * Returns the time at which the customer arrives.
+     *
      * @return the time at which the customer arrives.
      */
     public double getArrivalTime() {
@@ -53,6 +57,7 @@ class Customer {
     /**
      * Returns the time for which the customer waits
      * to be served since arriving.
+     *
      * @return the time for which the customer waits
      *      to be served since arriving.
      */

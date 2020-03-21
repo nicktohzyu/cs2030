@@ -21,21 +21,40 @@ class Event implements Comparable<Event> {
      * Represents the time at which the event occurs.
      */
     final double time;
+    /**
+     * Represents the server which the customer is served by, if relevant.
+     */
+    final Server server;
 
     /**
      * Creates a new event storing the relevant customer
      * and the type of interaction.
+     *
      * @param customer the customer which the event is related to.
-     * @param state the type of event/customer interaction.
+     * @param state    the type of event/customer interaction.
      */
     Event(Customer customer, int state) {
+        this(customer, state, null);
+    }
+
+    /**
+     * Creates a new event storing the relevant customer
+     * and the type of interaction.
+     *
+     * @param customer the customer which the event involves.
+     * @param state    the type of event/customer interaction.
+     * @param server    the server which the event involves.
+     */
+    Event(Customer customer, int state, Server server) {
         this.customer = customer;
         this.state = state;
+        this.server = server;
         this.time = getTime();
     }
 
     /**
      * Returns the time at which the event occurs.
+     *
      * @return the time at which the event occurs.
      */
     public double getTime() {
@@ -51,12 +70,12 @@ class Event implements Comparable<Event> {
             default:
                 break;
         }
-        //raise error
         return 0;
     }
 
     /**
      * Compares two event objects by time then by customer id.
+     *
      * @param otherEvent the other event to compare to.
      * @return a negative integer, zero, or a positive integer if this event
      *      occurs before, equal to, or after the other event.
@@ -82,11 +101,14 @@ class Event implements Comparable<Event> {
             case LEAVES:
                 return String.format("%.3f %d leaves\n", this.time, this.customer.id);
             case SERVED:
-                return String.format("%.3f %d served\n", this.time, this.customer.id);
+                return String.format("%.3f %d served by %s\n",
+                        this.time, this.customer.id, this.server);
             case DONE:
-                return String.format("%.3f %d done\n", this.time, this.customer.id);
+                return String.format("%.3f %d done serving by %s\n",
+                        this.time, this.customer.id, this.server);
             case WAITS:
-                return String.format("%.3f %d waits\n", this.time, this.customer.id);
+                return String.format("%.3f %d waits to be served by %s\n",
+                        this.time, this.customer.id, this.server);
             default:
                 return "";
         }
