@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b0f78675-8bb1-4698-9165-3d27603bee58" name="Default Changelist" comment="" />
+    <list default="true" id="b0f78675-8bb1-4698-9165-3d27603bee58" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,7 +29,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../lab7" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
@@ -160,10 +162,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="128" y="167" width="1098" height="665" key="dock-window-1/0.0.1280.680@0.0.1280.680" timestamp="1584702155976" />
-    <state x="524" y="219" key="new project wizard" timestamp="1583821310448">
+    <state x="524" y="219" key="new project wizard" timestamp="1585030230321">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state x="524" y="219" key="new project wizard/0.0.2194.1194@0.0.2194.1194" timestamp="1583821310448" />
+    <state x="524" y="219" key="new project wizard/0.0.2194.1194@0.0.2194.1194" timestamp="1585030230321" />
     <state x="840" y="217" key="refactoring.ChangeSignatureDialog" timestamp="1584702908122">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
