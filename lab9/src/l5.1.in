@@ -1,0 +1,6 @@
+/open Lazy.java
+/open InfiniteList.java
+/open InfiniteListImpl.java
+/open EmptyList.java
+Lazy.ofNullable(null).get().isPresent()
+
